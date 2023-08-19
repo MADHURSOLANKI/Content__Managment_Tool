@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Management Tool</title>
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        #task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Management Tool</h1>
+    </header>
+    <div class="container">
+        <h2>Tasks</h2>
+        <ul id="task-list">
+            <!-- Tasks will be dynamically added here using JavaScript -->
+        </ul>
+        <hr>
+        <h2>Create a New Task</h2>
+        <form id="task-form">
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" required>
+            <label for="assignee">Assign To:</label>
+            <input type="text" id="assignee" required>
+            <button type="submit">Create Task</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for adding tasks
+        const taskList = document.getElementById("task-list");
+        const taskForm = document.getElementById("task-form");
+
+        taskForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const taskName = document.getElementById("task-name").value;
+            const assignee = document.getElementById("assignee").value;
+            
+            if (taskName && assignee) {
+                // Create a new task element
+                const taskItem = document.createElement("li");
+                taskItem.classList.add("task");
+                taskItem.innerHTML = `
+                    <span>${taskName}</span>
+                    <span>Assignee: ${assignee}</span>
+                `;
+
+                // Add the task to the task list
+                taskList.appendChild(taskItem);
+
+                // Clear the form fields
+                document.getElementById("Task-name").value = "";
+                document.getElementById("Assignee").value = "";
+            }
+        });
+    </script>
+</body>
+</html>
