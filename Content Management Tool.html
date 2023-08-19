@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management Tool</title>
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #content {
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        .toolbar {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Content Management Tool</h1>
+
+        <!-- Toolbar for adding content -->
+        <div class="toolbar">
+            <button onclick="addText()">Add Text</button>
+            <button onclick="addImage()">Add Image</button>
+            <button onclick="addVideo()">Add Video</button>
+        </div>
+
+        <!-- Content area -->
+        <div id="content">
+            <!-- Content elements will be added here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions for adding content
+        function addText() {
+            const textElement = document.createElement("p");
+            textElement.contentEditable = true;
+            textElement.textContent = "Enter your text here...";
+            document.getElementById("content").appendChild(textElement);
+        }
+
+        function addImage() {
+            const imageUrl = prompt("Enter the URL of the image:");
+            if (imageUrl) {
+                const imgElement = document.createElement("img");
+                imgElement.src = imageUrl;
+                document.getElementById("content").appendChild(imgElement);
+            }
+        }
+
+        function addVideo() {
+            const videoUrl = prompt("Enter the URL of the video (YouTube, Vimeo, etc.):");
+            if (videoUrl) {
+                const videoElement = document.createElement("iframe");
+                videoElement.src = videoUrl;
+                videoElement.width = "560";
+                videoElement.height = "315";
+                document.getElementById("content").appendChild(videoElement);
+            }
+        }
+    </script>
+</body>
+</html>
